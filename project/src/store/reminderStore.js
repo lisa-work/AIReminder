@@ -9,7 +9,7 @@ export const defaultSettings = {
   soundEnabled: true,
   notificationsEnabled: true,
   username: 'Friend',
-  botvibe: 'Happy'
+  botVibe: 'Happy'
 };
 
 /**
