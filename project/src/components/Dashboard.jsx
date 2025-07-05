@@ -7,6 +7,10 @@ import { SettingsModal } from './SettingsModal.jsx';
 import { useReminders } from '../hooks/useReminders.js';
 import { useSettings } from '../hooks/useSettings.js';
 import { requestNotificationPermission } from '../utils/notifications.js';
+import { MdEventNote } from "react-icons/md";
+import { SlNote } from "react-icons/sl";
+import { GiPartyPopper } from "react-icons/gi";
+
 
 export const Dashboard = () => {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
@@ -97,9 +101,12 @@ export const Dashboard = () => {
         <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700">
           <div className="p-6 border-b border-gray-200 dark:border-gray-700">
             <div className="flex items-center justify-between">
-              <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
-                📝 {showCompleted ? 'Completed' : 'Active'} Reminders
-              </h2>
+              <div className="flex gap-2 flex-row items-center justify-center">
+                <MdEventNote className="text-purple-600 text-lg" /> 
+                <h2 className="text-xl font-semibold text-purple-600 dark:text-white">
+                  {showCompleted ? 'Completed' : 'Active'} Reminders
+                </h2>
+              </div>
               <div className="flex items-center space-x-2">
                 <button
                   onClick={() => setShowCompleted(false)}
@@ -130,8 +137,8 @@ export const Dashboard = () => {
           <div className="p-6">
             {currentReminders.length === 0 ? (
               <div className="text-center py-12">
-                <div className="text-6xl mb-4">
-                  {showCompleted ? '🎉' : '📅'}
+                <div className="text-6xl mb-4 flex flex-col justify-center items-center gap-2">
+                  {showCompleted ? <GiPartyPopper className="text-purple-700"/> : <SlNote className="text-gray-400"/>}
                 </div>
                 <h3 className="text-xl font-medium text-gray-900 dark:text-white mb-2">
                   {showCompleted ? 'No completed reminders yet' : 'No active reminders'}
