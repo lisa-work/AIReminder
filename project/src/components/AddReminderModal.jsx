@@ -7,38 +7,35 @@ export const AddReminderModal = ({
   onAdd,
 }) => {
   const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
-  const [category, setCategory] = useState('focus');
   const [repeatType, setRepeatType] = useState('never');
   const [soundEnabled, setSoundEnabled] = useState(true);
+  const [repeatAmount, setRepeatAmount] = useState('');
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    
-    if (!title.trim() || !date || !time) return;
+const handleSubmit = (e) => {
+  e.preventDefault();
 
-    const targetTime = new Date(`${date}T${time}`);
-    
-    onAdd({
-      title: title.trim(),
-      isActive: true,
-      isCompleted: false,
-      repeatType,
-      soundEnabled,
-    });
+  if (!title.trim()) return;
 
-    // Reset form
-    setTitle('');
-    setDescription('');
-    setDate('');
-    setTime('');
-    setCategory('focus');
-    setRepeatType('never');
-    setSoundEnabled(true);
-    onClose();
-  };
+  onAdd({
+    title: title.trim(),
+    isActive: true,
+    isCompleted: false,
+    repeatType,
+    repeatAmount,
+    soundEnabled,
+    lastNotifiedAt: new Date().toISOString(), // track notification time
+    createdAt: new Date(),
+  });
+
+  // reset inputs
+  setTitle('');
+  setRepeatAmount('');
+  setRepeatType('never');
+  setSoundEnabled(true);
+  onClose();
+};
 
   if (!isOpen) return null;
 
@@ -84,18 +81,27 @@ export const AddReminderModal = ({
                 <input
                   type="number"
                   min="1"
-                  className="w-16 h-13 p-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white"
+                  value={repeatAmount}
+                  onChange={(e) =>
+                    setRepeatAmount(e.target.value === '' ? '' : Number(e.target.value))
+                  }
+                  disabled={repeatType === 'never'}
+                  className={`w-16 h-13 p-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white
+                    ${repeatType === 'never' ? 'bg-gray-200 cursor-not-allowed' : 'border-gray-300 dark:border-gray-600'}
+                  `}
                 />
-                <select
-                  value={repeatType}
-                  onChange={(e) => setRepeatType(e.target.value)}
-                  className="w-full h-13 p-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white"
-                >
-                  <option value="never">Seconds</option>
-                  <option value="daily">Minutes</option>
-                  <option value="weekly">Days</option>
-                  <option value="custom">Week</option>
-                </select>
+                  <select
+                    value={repeatType}
+                    onChange={(e) => setRepeatType(e.target.value)}
+                    className="w-full h-13 p-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white"
+                  >
+                    <option value="never">Never</option>
+                    <option value="seconds">Seconds</option>
+                    <option value="minutes">Minutes</option>
+                    <option value="hours">Hours</option>
+                    <option value="days">Days</option>
+                    <option value="weeks">Weeks</option>
+                  </select>
               </div>
             </div>
 

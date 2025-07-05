@@ -1,4 +1,4 @@
-// Reminder types and interfaces (converted to JSDoc comments for better IDE support)
+// Reminder types and interfaces
 
 /**
  * @typedef {Object} Reminder
