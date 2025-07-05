@@ -50,8 +50,8 @@ export const Dashboard = () => {
 
         {/* Action Bar */}
         <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 mb-6 border border-gray-200 dark:border-gray-700">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div className="flex items-center space-x-4">
+          <div className="flex flex-col md:flex-row justify-start items-center md:justify-between gap-4">
+            <div className="flex flex-row items-center space-x-4">
               <button
                 onClick={() => setIsAddModalOpen(true)}
                 className="flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg hover:from-blue-600 hover:to-purple-700 transition-all duration-200 transform hover:scale-105 shadow-lg"
@@ -62,14 +62,14 @@ export const Dashboard = () => {
               
               <button
                 onClick={() => window.location.reload()}
-                className="p-3 text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
+                className="hidden md:flex p-3 text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
                 title="Refresh"
               >
                 <RefreshCw className="w-5 h-5" />
               </button>
             </div>
 
-            <div className="flex items-center space-x-4">
+            <div className="flex flex-col md:flex-row space-y-3 items-center space-x-4">
               {notificationPermission !== 'granted' && (
                 <button
                   onClick={handleEnableNotifications}
@@ -100,14 +100,14 @@ export const Dashboard = () => {
         {/* Reminder List */}
         <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700">
           <div className="p-6 border-b border-gray-200 dark:border-gray-700">
-            <div className="flex items-center justify-between">
+            <div className="flex space-y-3 md:flex-row items-center justify-between">
               <div className="flex gap-2 flex-row items-center justify-center">
-                <MdEventNote className="text-purple-600 text-lg" /> 
-                <h2 className="text-xl font-semibold text-purple-600 dark:text-white">
+                <MdEventNote className="text-gray-900 text-lg" /> 
+                <h2 className="text-lg lg:text-xl font-semibold text-gray-900 dark:text-white">
                   {showCompleted ? 'Completed' : 'Active'} Reminders
                 </h2>
               </div>
-              <div className="flex items-center space-x-2">
+              <div className="flex flex-col md:flex-row items-center space-x-2">
                 <button
                   onClick={() => setShowCompleted(false)}
                   className={`px-3 py-1 rounded-lg text-sm transition-colors ${
@@ -116,7 +116,7 @@ export const Dashboard = () => {
                       : 'text-gray-500 hover:text-gray-700 dark:hover:text-gray-300'
                   }`}
                 >
-                  <Calendar className="w-4 h-4 inline mr-1" />
+                  <Calendar className="text-sm w-4 h-4 inline mr-1" />
                   Active ({activeReminders.length})
                 </button>
                 <button
@@ -127,7 +127,7 @@ export const Dashboard = () => {
                       : 'text-gray-500 hover:text-gray-700 dark:hover:text-gray-300'
                   }`}
                 >
-                  <CheckCircle className="w-4 h-4 inline mr-1" />
+                  <CheckCircle className="text-sm w-4 h-4 inline mr-1" />
                   Completed ({completedReminders.length})
                 </button>
               </div>
