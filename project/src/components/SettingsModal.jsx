@@ -64,31 +64,16 @@ export const SettingsModal = ({
 
             <div>
               <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                <Palette className="w-4 h-4 inline mr-1" />
-                Theme
+                <Bot className="w-4 h-4 inline mr-1" />
+                Bot Vibe
               </label>
-              <div className="flex space-x-3">
-                {[
-                  { value: 'light', label: 'Light', emoji: '☀️' },
-                  { value: 'dark', label: 'Dark', emoji: '🌙' },
-                  { value: 'fun', label: 'Fun', emoji: '🎨' },
-                ].map((theme) => (
-                  <button
-                    key={theme.value}
-                    onClick={() => setLocalSettings({ ...localSettings, theme: theme.value })}
-                    className={`flex-1 p-3 rounded-lg border transition-all ${
-                      localSettings.theme === theme.value
-                        ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300'
-                        : 'border-gray-300 dark:border-gray-600 hover:border-gray-400'
-                    }`}
-                  >
-                    <div className="text-center">
-                      <div className="text-2xl mb-1">{theme.emoji}</div>
-                      <div className="text-sm font-medium">{theme.label}</div>
-                    </div>
-                  </button>
-                ))}
-              </div>
+              <input
+                type="text"
+                value={localSettings.botVibe}
+                onChange={(e) => setLocalSettings({ ...localSettings, botVibe: e.target.value })}
+                className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white"
+                placeholder="Encouraging, Professional, etc."
+              />
             </div>
 
             <div>
