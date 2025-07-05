@@ -84,18 +84,18 @@ export const AddReminderModal = ({
                 <input
                   type="number"
                   min="1"
-                  className="w-16 px-2 py-1 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white"
+                  className="w-16 h-13 p-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white"
                 />
-                {/* <select
+                <select
                   value={repeatType}
                   onChange={(e) => setRepeatType(e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white"
+                  className="w-full h-13 p-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white"
                 >
                   <option value="never">Seconds</option>
                   <option value="daily">Minutes</option>
                   <option value="weekly">Days</option>
                   <option value="custom">Week</option>
-                </select> */}
+                </select>
               </div>
             </div>
 
