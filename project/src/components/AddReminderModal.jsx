@@ -108,7 +108,7 @@ export const AddReminderModal = ({
                 className="w-5 h-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
               />
               <label htmlFor="soundEnabled" className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                🔔 Enable sound notification
+                Enable sound notification
               </label>
             </div>
 
