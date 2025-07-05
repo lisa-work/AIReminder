@@ -1,3 +1,5 @@
+import React, { useState } from 'react';
+
 export default function FirstTimeSetupModal({ updateSettings }) {
   const [username, setUsername] = useState("");
   const [botName, setBotName] = useState("");
